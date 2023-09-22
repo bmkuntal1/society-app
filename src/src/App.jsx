@@ -1,15 +1,32 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import WebLayout from "./Pages/Website/components/Layout/WebLayout";
 import HomePage from "./Pages/Website/HomePage";
-import AnouncementPage from "./Pages/Website/AnouncementPage";
 import PrivacyPolicyPage from "./Pages/Website/PrivacyPolicyPage";
 import TermConditionPage from "./Pages/Website/TermConditionPage";
 import ContactPage from "./Pages/Website/ContactPage";
 import Election2023Page from "./Pages/Website/Election2023Page";
 import AboutPage from "./Pages/Website/AboutPage";
 import ResidentCorner from "./Pages/Website/ResidentCorner";
+import AdminLayout from "./Pages/admin/layout/AdminLayout";
+import Dashboard from "./Pages/admin/Dashboard";
+import EventsPage from "./Pages/Website/EventsPage";
+import ManageEventsPage from "./Pages/admin/ManageEventsPage";
 
 const routes = [
+  {
+    path: "admin",
+    element: <AdminLayout />,
+    children: [
+      {
+        path: "",
+        element: <Dashboard />
+      },
+      {
+        path: "events",
+        element: <ManageEventsPage />
+      }
+    ]
+  },
   {
     path: "",
     element: <WebLayout />,
@@ -23,8 +40,8 @@ const routes = [
         element: <AboutPage />,
       },
       {
-        path: "anouncements",
-        element: <AnouncementPage />,
+        path: "events",
+        element: <EventsPage />,
       },
       {
         path: "privacy-policy",
@@ -40,11 +57,11 @@ const routes = [
       },
       {
         path: "election-2023",
-        element: <Election2023Page/>
+        element: <Election2023Page />
       },
       {
         path: "resident-corner",
-        element: <ResidentCorner/>
+        element: <ResidentCorner />
       }
     ],
   },

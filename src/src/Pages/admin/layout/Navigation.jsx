@@ -1,6 +1,7 @@
 import { Navbar, Nav, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import logo from '/src/assets/images/tarang_logo.jpg'
+import avatar from '/src/assets/images/avatar.png'
 
 function Navigation() {
     return (
@@ -12,6 +13,7 @@ function Navigation() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto mb-2 mb-lg-0 small fw-bolder">
+                        {/* All menu with rounded pill button menu and dark on active bootstrap-5*/}
                         <Link className="nav-link" to="/">Home</Link>
                         <Link className="nav-link" to="/about-us">About</Link>
                         <Link className="nav-link" to="/election-2023">Election 2023</Link>
@@ -21,5 +23,6 @@ function Navigation() {
         </Navbar>
     )
 }
+
 
 export default Navigation

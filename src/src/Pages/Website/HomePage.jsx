@@ -1,11 +1,12 @@
 import HomeHero from './components/HomeHero'
-import RecentAnouncement from './components/RecentAnouncement'
+import RecentEvents from './components/RecentEvents'
 
 function HomePage() {
+
   return (
     <>
       <HomeHero />
-      <RecentAnouncement />
+      <RecentEvents/>
     </>
   )
 }
