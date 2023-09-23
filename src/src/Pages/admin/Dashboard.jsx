@@ -1,8 +1,16 @@
-import React from 'react'
+import MenuCard from "./components/MenuCard"
 
 function Dashboard() {
   return (
-    <div>Dashboard</div>
+    <div className="container mt-5 mb-3">
+      <div className="row">
+        <div className="col-md-4"></div>
+        <div className="col-md-4">
+          <MenuCard icon="bell" title="Events" description="Manage Events" className="bg-info text-light" />
+        </div>
+        <div className="col-md-4"></div>
+      </div>
+    </div>
   )
 }
 
