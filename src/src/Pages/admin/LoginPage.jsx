@@ -1,17 +1,20 @@
-import { Container, Card, CardBody, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { useForm } from 'react-hook-form';
 import logo from '../../assets/images/tarang_logo.jpg'
 import { auth, } from '../../firebase.config';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { Container, Card, Button, Form } from 'react-bootstrap';
+import { Navigate } from 'react-router-dom';
 
 const LoginPage = () => {
+  const [signInWithEmailAndPassword, user, loading, error,] = useSignInWithEmailAndPassword(auth);
 
-  const { register, handleSubmit, formState: { errors } } = useForm({ defaultValues:{ email: 'bmkunta1@gmail.com', password: 'Pass@247' }  });
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
   const onSubmit = async (data) => {
-    await signInWithEmailAndPassword(auth, data.email, data.password);
+    await signInWithEmailAndPassword(data.email, data.password);
   };
+
+  if(!loading && user)  return <Navigate to="/admin" />
 
   return (
     <Container className="vh-100 d-flex flex-column justify-content-start align-items-center">
@@ -19,33 +22,28 @@ const LoginPage = () => {
         <img src={logo} alt="Logo" height="72" />
       </div>
 
-      <Card className="w-100 mt-4" style={{ maxWidth: '400px' }}>
-        <CardBody>
+      <Card className="shadow-lg border-0 w-100 mt-4" style={{ maxWidth: '400px' }}>
+        <Card.Body>
           <div className="text-center mb-4">
             <h1 className="h3 mb-2 font-weight-normal">Login</h1>
           </div>
           <Form onSubmit={handleSubmit(onSubmit)}>
-            <FormGroup>
-              <Label for="email">Email</Label>
-              <Input type="email" name="email" id="email" placeholder="Enter your email" {...register('email', {
-                required: true, pattern: {
-                  value: /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/,
-                  message: "Please enter a valid email address"
-                }
-              })} className={errors.password && 'is-invalid'} />
+            <Form.Group controlId="userEmail" className="mb-2">
+              <Form.Label>Email</Form.Label>
+              <Form.Control type="email" placeholder="Enter your email" {...register('email', { required: true })} className={errors.email && 'is-invalid'} />
               {errors.email && errors.email.type == 'required' && <span className="text-danger">This field is required</span>}
               {errors.email && errors.email.type == 'pattern' && <span className="text-danger">{errors.email.message}</span>}
-            </FormGroup>
-            <FormGroup>
-              <Label for="password">Password</Label>
-              <Input type="password" name="password" id="password" placeholder="Enter your password" {...register('password', { required: true, minLength: 5 })} className={errors.password && "is-invalid"} />
-              {errors.password && errors.password.type == 'required' && <span className="text-danger">Password must be at least 5 characters long</span>}
-              {errors.password && errors.password.type == 'minLength' && <span className="text-danger">This field is required</span>}
-            </FormGroup>
-            <Button color="primary" type="submit" block>Login</Button>
+            </Form.Group>
+
+            <Form.Group controlId="userPassword" className="mb-3">
+              <Form.Label>Password</Form.Label>
+              <Form.Control type="password" placeholder="Enter your password" {...register('password', { required: true })} className={errors.password && 'is-invalid'} />
+              {errors.password && <span className="text-danger">This field is required</span>}
+            </Form.Group>
+            <Button className="w-100" color="primary" type="submit">Login</Button>
           </Form>
           <div className="text-center small m-2">Copyright &copy; Manglam Tarang Society 2023</div>
-        </CardBody>
+        </Card.Body>
       </Card>
     </Container>
   );

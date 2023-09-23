@@ -1,6 +1,7 @@
 import MenuCard from "./components/MenuCard"
 
 function Dashboard() {
+  
   return (
     <div className="container mt-5 mb-3">
       <div className="row">
@@ -11,7 +12,7 @@ function Dashboard() {
         <div className="col-md-4"></div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Dashboard
