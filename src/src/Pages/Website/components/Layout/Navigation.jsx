@@ -7,7 +7,9 @@ function Navigation() {
         <Navbar expand="lg" className="navbar-light bg-white py-3">
             <Container className="px-5">
                 <Navbar.Brand>
-                    <img src={logo} alt="..." className="navbar-brand-img" />
+                <Link className="navbar-brand" to="/">
+                        <img src={logo} alt="..." className="navbar-brand-img" />
+                    </Link>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">

@@ -14,7 +14,7 @@ const LoginPage = () => {
     await signInWithEmailAndPassword(data.email, data.password);
   };
 
-  if(!loading && user)  return <Navigate to="/admin" />
+  if (!loading && user) return <Navigate to="/admin" />
 
   return (
     <Container className="vh-100 d-flex flex-column justify-content-start align-items-center">
@@ -40,7 +40,9 @@ const LoginPage = () => {
               <Form.Control type="password" placeholder="Enter your password" {...register('password', { required: true })} className={errors.password && 'is-invalid'} />
               {errors.password && <span className="text-danger">This field is required</span>}
             </Form.Group>
-            <Button className="w-100" color="primary" type="submit">Login</Button>
+            <Button className="w-100" color="primary" type="submit" disabled={loading}>
+              {loading ? <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> : 'Login'}
+            </Button>
           </Form>
           <div className="text-center small m-2">Copyright &copy; Manglam Tarang Society 2023</div>
         </Card.Body>

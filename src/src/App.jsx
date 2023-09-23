@@ -1,17 +1,18 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import WebLayout from "./Pages/Website/components/Layout/WebLayout";
-import HomePage from "./Pages/Website/HomePage";
-import PrivacyPolicyPage from "./Pages/Website/PrivacyPolicyPage";
-import TermConditionPage from "./Pages/Website/TermConditionPage";
-import ContactPage from "./Pages/Website/ContactPage";
-import Election2023Page from "./Pages/Website/Election2023Page";
-import AboutPage from "./Pages/Website/AboutPage";
-import ResidentCorner from "./Pages/Website/ResidentCorner";
-import EventsPage from "./Pages/Website/EventsPage";
-import LoginPage from "./Pages/admin/LoginPage";
-import AdminLayout from "./Pages/admin/components/Layout/AdminLayout";
+import WebLayout from "./pages/Website/components/Layout/WebLayout";
+import HomePage from "./pages/Website/HomePage";
+import PrivacyPolicyPage from "./pages/Website/PrivacyPolicyPage";
+import TermConditionPage from "./pages/Website/TermConditionPage";
+import ContactPage from "./pages/Website/ContactPage";
+import Election2023Page from "./pages/Website/Election2023Page";
+import AboutPage from "./pages/Website/AboutPage";
+import ResidentCorner from "./pages/Website/ResidentCorner";
+import EventsPage from "./pages/Website/EventsPage";
+import LoginPage from "./pages/admin/LoginPage";
 import Dashboard from "./pages/admin/Dashboard";
-import ManageEventsPage from "./Pages/admin/ManageEventsPage";
+import ManageEventsPage from "./pages/admin/ManageEventsPage";
+import NotFoundPage from "./pages/NotFoundPage";
+import AdminLayout from "./Pages/admin/components/Layout/AdminLayout";
 
 
 const routes = [
@@ -73,7 +74,7 @@ const routes = [
   },
   {
     path: "*",
-    element: <h1>404</h1>
+    element: <NotFoundPage/>
   }
 ]
 

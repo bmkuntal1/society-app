@@ -7,12 +7,13 @@ import { Navigate } from 'react-router-dom'
 function AdminLayout() {
     const [user, loading, error] = useAuthState(auth);
 
-    return !loading && user ? (
+    return (
         <>
+            {user ? <Navigate to="/admin" /> : <Navigate to="/login" />}
             <Navigation />
             <Outlet />
         </>
-    ) : <Navigate to="/login" />
+    )
 }
 
 export default AdminLayout
