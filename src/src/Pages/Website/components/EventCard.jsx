@@ -1,6 +1,20 @@
 import { format } from 'date-fns'
+import { ref, getDownloadURL } from 'firebase/storage'
+import { storage } from '../../../firebase.config'
+import { Button } from 'react-bootstrap';
 
 function EventCard({ data }) {
+    const downloadFile = async (file) => {
+        const fileRef = ref(storage, file);
+        await getDownloadURL(fileRef).then((result) => {
+            console.log(result);
+            window.open(result);
+        }
+        ).catch((error) => {
+            console.log(error);          
+        });
+    }
+
     return (
         <div className="card shadow border-0 rounded-4 mb-5">
             <div className="card-body p-4">
@@ -24,7 +38,7 @@ function EventCard({ data }) {
                         <div className="mt-2 text-end">
                             {data?.documents && data.documents.map((doc, index) => {
                                 return (
-                                    <a className="btn btn-pill text-gradient px-4" key={index} href={doc.url}>{doc.name} <i className="bi bi-download"></i></a>
+                                    <button className="btn btn-pill text-gradient px-4" key={index} onClick={()=>downloadFile(doc.url)}>{doc.name} <i className="bi bi-download"></i></button>
                                 )
                             })}
                         </div>

@@ -1,11 +1,11 @@
 import { db } from "../../../firebase.config";
-import { query, collection, orderBy, limit } from "firebase/firestore";
+import { query, collection, where, orderBy, limit } from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore";
 import EventCard from "./EventCard";
 
 function RecentEvents() {
-
-    const [value, loading, error] = useCollection(query(collection(db, 'events'), orderBy('eventDate', 'desc'), limit(3)));
+    const query1 = query(collection(db, 'events'), where('active', '==', true));
+    const [value, loading, error] = useCollection(query1, orderBy('eventDate', 'desc'), limit(3));
 
     return (
         <>

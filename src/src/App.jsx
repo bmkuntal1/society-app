@@ -7,10 +7,12 @@ import ContactPage from "./Pages/Website/ContactPage";
 import Election2023Page from "./Pages/Website/Election2023Page";
 import AboutPage from "./Pages/Website/AboutPage";
 import ResidentCorner from "./Pages/Website/ResidentCorner";
-import AdminLayout from "./Pages/admin/layout/AdminLayout";
-import Dashboard from "./Pages/admin/Dashboard";
 import EventsPage from "./Pages/Website/EventsPage";
+import LoginPage from "./Pages/admin/LoginPage";
+import AdminLayout from "./Pages/admin/components/Layout/AdminLayout";
+import Dashboard from "./pages/admin/Dashboard";
 import ManageEventsPage from "./Pages/admin/ManageEventsPage";
+
 
 const routes = [
   {
@@ -64,6 +66,10 @@ const routes = [
         element: <ResidentCorner />
       }
     ],
+  },
+  {
+    path: "login",
+    element: <LoginPage />
   },
   {
     path: "*",

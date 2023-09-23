@@ -6,13 +6,10 @@ import EventCard from "./components/EventCard";
 import { useSearchParams } from "react-router-dom";
 
 function EventsPage() {
-    //searchParam
     const [searchParams, setSearchParams] = useSearchParams();
     const eventType = searchParams.get('q') == 'meeting' ? 'Meeting' : searchParams.get('q') == 'activity' ? 'Activity' : 'All';
-
-    const [value, loading, error] = useCollection(query(collection(db, 'events'), !searchParams.get('q') || where('eventType', '==', eventType)), orderBy('eventDate', 'desc'), limit(10));
-    //Convert above query to case insensitive
-
+    const query1 = query(collection(db, 'events'), where('active', '==', true));
+    const [value, loading, error] = useCollection(query1, searchParams.get('q') && where('eventType', '==', eventType), orderBy('eventDate', 'desc'), limit(10));
 
     return (
         <>
@@ -28,7 +25,7 @@ function EventsPage() {
                                 <section>
                                     <div className="d-flex align-items-center justify-content-between mb-4">
                                         <h2 className="text-primary fw-bolder mb-0">{eventType == 'Meeting' ? 'Meetings' : eventType == 'Activity' ? 'Activities' : 'All'}</h2>
-                                        
+
                                         <div>
                                             {/*pill button smal for tags  */}
                                             <button type="button" onClick={() => setSearchParams({})} className="btn btn-outline-primary btn-sm me-2">All</button>

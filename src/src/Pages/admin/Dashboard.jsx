@@ -6,7 +6,7 @@ function Dashboard() {
       <div className="row">
         <div className="col-md-4"></div>
         <div className="col-md-4">
-          <MenuCard icon="bell" title="Events" description="Manage Events" className="bg-info text-light" />
+          <MenuCard to="events" icon="bell" title="Events" description="Manage Events" className="bg-info text-light" />
         </div>
         <div className="col-md-4"></div>
       </div>
