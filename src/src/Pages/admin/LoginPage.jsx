@@ -1,17 +1,18 @@
 import { useForm } from 'react-hook-form';
 import logo from '../../assets/images/tarang_logo.jpg'
-import { auth, } from '../../firebase.config';
+import { auth} from '../../firebase.config';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Container, Card, Button, Form } from 'react-bootstrap';
 import { Navigate } from 'react-router-dom';
 
 const LoginPage = () => {
+  auth.setPersistence('local');
   const [signInWithEmailAndPassword, user, loading, error,] = useSignInWithEmailAndPassword(auth);
 
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const onSubmit = async (data) => {
-    await signInWithEmailAndPassword(data.email, data.password);
+    await signInWithEmailAndPassword(data.email, data.password)
   };
 
   if (!loading && user) return <Navigate to="/admin" />
