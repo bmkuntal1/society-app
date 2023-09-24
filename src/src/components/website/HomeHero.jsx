@@ -6,7 +6,7 @@ function HomeHero() {
         <header className="py-3">
             <div className="container px-5 pb-5">
                 <div className="row gx-5 align-items-center">
-                    <div className="col-xxl-5">
+                    <div className="col-xxl-7">
 
                         <div className="text-center text-xxl-start">
                             <div className="fs-3 fw-light text-muted">Welcome To</div>
@@ -18,7 +18,7 @@ function HomeHero() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-xxl-7">
+                    <div className="col-xxl-5">
                         {/* <HoemHeroImage /> */}
                         <HomeHeroCarousel />
                     </div>

@@ -1,4 +1,6 @@
-import { Carousel } from 'react-bootstrap'
+import { Carousel } from 'react-bootstrap';
+import banner1 from "../../assets/images/banner1.png";
+import banner from "../../assets/images/banner.png";
 
 
 function HomeHeroCarousel() {
@@ -8,19 +10,16 @@ function HomeHeroCarousel() {
             <Carousel>
                 <Carousel.Item>
                     <div>
-                        <img className="d-block w-100" src="https://picsum.photos/800/400?text=First slide&bg=373940" alt="First slide" />
+                        <img className="d-block w-100" src={banner} alt="..." />
                     </div>
                 </Carousel.Item>
-                <Carousel.Item>
-                    <div >
-                        <img className="d-block w-100" src="https://picsum.photos/800/400?text=First slide&bg=373940" alt="First slide" />
-                    </div>
-                </Carousel.Item>
+
                 <Carousel.Item>
                     <div>
-                        <img className="d-block w-100" src="https://picsum.photos/800/400?text=First slide&bg=373940" alt="First slide" />
+                        <img className="d-block w-100" src={banner1} alt="..." />
                     </div>
                 </Carousel.Item>
+                
             </Carousel>
         </div>
     );

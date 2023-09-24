@@ -1,5 +1,6 @@
 import { Button, Modal } from "react-bootstrap";
 import heroImage from "../../assets/images/tarang_hero.jpg";
+import banner from "../../assets/images/banner1.png";
 import { useState } from "react";
 
 function HomPopup() {
@@ -7,7 +8,7 @@ function HomPopup() {
     return (
         <Modal show={show} size="auto" centered={true} className="home-popup p-0">
             <Modal.Body className="p-0">
-                <img src={heroImage} alt="Background Image" className="img-fluid" />
+                <img src={banner} alt="Background Image" className="img-fluid" />
                 {/* ovelay close button */}
                 <Button onClick={() => setShow(false)} variant="light" className="position-absolute top-0 end-0 m-3">
                     <i className="bi bi-x-lg"></i>
