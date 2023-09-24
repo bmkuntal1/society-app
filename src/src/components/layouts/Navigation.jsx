@@ -1,11 +1,24 @@
 import { Navbar, Nav, Container } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import logo from '/src/assets/images/tarang_logo.jpg'
 import { auth } from '/src/firebase.config'
-import { useSignOut } from 'react-firebase-hooks/auth'
+import { useAuthState, useSignOut } from 'react-firebase-hooks/auth'
+import HomePopup from '../../components/website/HomPopup'
 
 function Navigation() {
-    const [signOut, loading, error] = useSignOut(auth);
+    const navigate = useNavigate();
+    const [user] = useAuthState(auth);
+    const [signOut, loading] = useSignOut(auth);
+
+    const handleSignOut = async () => {
+        if (user) {
+            await signOut(auth);
+            navigate("/");
+            return
+        }
+        navigate("/login");
+    }
+
     return (
         <Navbar expand="lg" className="navbar-light bg-white py-3">
             <Container className="px-5">
@@ -22,14 +35,14 @@ function Navigation() {
                         <Link className="nav-link" to="/about-us">About</Link>
                         <Link className="nav-link" to="/election-2023">Election 2023</Link>
                         {loading ? <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> :
-                            <button onClick={async () => await signOut(auth)} className="nav-link btn btn-link text-decoration-none text-start" to="/login">
-                                <i className="bi bi-person-circle me-1"></i><span>Logout</span>
+                            <button onClick={handleSignOut} className="nav-link btn btn-link text-decoration-none text-start" to="/login">
+                                <i className="bi bi-person-circle me-1"></i><span>{user ? user.email : 'Login'}</span>
                             </button>
                         }
                     </Nav>
                 </Navbar.Collapse>
-
             </Container>
+            <HomePopup/>
         </Navbar>
     )
 }

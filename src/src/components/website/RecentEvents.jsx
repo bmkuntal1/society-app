@@ -1,4 +1,4 @@
-import { db } from "../../../firebase.config";
+import { db } from "../../firebase.config";
 import { query, collection, where, orderBy, limit } from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore";
 import EventCard from "./EventCard";

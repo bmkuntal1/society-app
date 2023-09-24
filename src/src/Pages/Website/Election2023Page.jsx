@@ -1,4 +1,4 @@
-import UnderConstruction from "./components/UnderConstruction"
+import UnderConstruction from "../../components/website/UnderConstruction"
 
 function Election2023Page() {
     return (

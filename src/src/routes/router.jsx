@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
-import AdminLayout from "../pages/admin/components/layout/AdminLayout";
-import WebLayout from "../pages/website/components/layout/WebLayout";
+import AdminLayout from "../components/layouts/AdminLayout";
+import WebLayout from "../components/layouts/WebLayout";
 import HomePage from "../pages/website/HomePage";
 import AboutPage from "../pages/website/AboutPage";
 import EventsPage from "../pages/website/EventsPage";

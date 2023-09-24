@@ -1,7 +1,6 @@
 import { format } from 'date-fns'
 import { ref, getDownloadURL } from 'firebase/storage'
-import { storage } from '../../../firebase.config'
-import { Button } from 'react-bootstrap';
+import { storage } from '../../firebase.config'
 
 function EventCard({ data }) {
     const downloadFile = async (file) => {
@@ -34,7 +33,6 @@ function EventCard({ data }) {
                         <p className="mt-1">
                             {data?.description}
                         </p>
-                        {/* add small download buttons at end for notice and MoM */}
                         <div className="mt-2 text-end">
                             {data?.documents && data.documents.map((doc, index) => {
                                 return (

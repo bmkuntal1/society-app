@@ -1,4 +1,4 @@
-import MenuCard from "./components/MenuCard"
+import MenuCard from "../../components/MenuCard"
 
 function Dashboard() {
   

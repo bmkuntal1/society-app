@@ -2,7 +2,7 @@
 import { db } from "../../firebase.config";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { collection, query, where, or, orderBy, limit } from "firebase/firestore";
-import EventCard from "./components/EventCard";
+import EventCard from "../../components/website/EventCard";
 import { useSearchParams } from "react-router-dom";
 
 function EventsPage() {

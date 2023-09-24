@@ -1,5 +1,6 @@
-import HomeHero from './components/HomeHero'
-import RecentEvents from './components/RecentEvents'
+
+import HomeHero from './../../components/website/HomeHero';
+import RecentEvents from './../../components/website/RecentEvents';
 
 function HomePage() {
 
