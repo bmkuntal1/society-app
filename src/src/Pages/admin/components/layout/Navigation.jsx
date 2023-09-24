@@ -21,15 +21,14 @@ function Navigation() {
                         <Link className="nav-link" to="/">Home</Link>
                         <Link className="nav-link" to="/about-us">About</Link>
                         <Link className="nav-link" to="/election-2023">Election 2023</Link>
+                        {loading ? <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> :
+                            <button onClick={async () => await signOut(auth)} className="nav-link btn btn-link text-decoration-none text-start" to="/login">
+                                <i className="bi bi-person-circle me-1"></i><span>Logout</span>
+                            </button>
+                        }
                     </Nav>
                 </Navbar.Collapse>
-                <div className="d-flex align-items-center">
-                    {loading ? <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> :
-                        <button onClick={async () => await signOut(auth)} className="btn btn-link text-decoration-none" to="/login">
-                            <i className="bi bi-person-circle"></i>
-                        </button>
-                    }
-                </div>
+
             </Container>
         </Navbar>
     )
