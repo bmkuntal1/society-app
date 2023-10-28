@@ -7,7 +7,7 @@ import { Navigate } from 'react-router-dom';
 
 const LoginPage = () => {
   const [signInWithEmailAndPassword, user, loading] = useSignInWithEmailAndPassword(auth);
-  const [authUser=user, authLoading=loading] = useAuthState(auth);
+  const [authUser=user] = useAuthState(auth);
 
   const { register, handleSubmit, formState: { errors } } = useForm();
 

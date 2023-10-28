@@ -4,8 +4,9 @@ import { useCollection } from "react-firebase-hooks/firestore";
 import EventCard from "./EventCard";
 
 function RecentEvents() {
-    const query1 = query(collection(db, 'events'), where('active', '==', true));
-    const [value, loading, error] = useCollection(query1, orderBy('eventDate', 'desc'), limit(3));
+    const query1 = query(collection(db, 'events'), where('active','==', true), orderBy("eventDate", "desc"), limit(3));
+
+    const [value, loading, error] = useCollection(query1);
 
     return (
         <>

@@ -7,7 +7,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect } from 'react';
 
 function EventTitleModal({ show, onClose, id }) {
-    //const [values, loading, error] = useDocument(doc(db, 'events', id), { snapshotListenOptions: { includeMetadataChanges: true } });
     const { register, setValue, handleSubmit, formState: { errors } } = useForm({ values: { date: new Date().toISOString().slice(0, -8) } });
 
     const onSubmit = (data) => {
@@ -67,15 +66,16 @@ function EventTitleModal({ show, onClose, id }) {
                             <Form.Label>Event Type</Form.Label>
                             <Form.Select aria-label="Default select example" {...register("eventType", { required: true })} className={errors.eventType && 'is-invalid'}>
                                 <option value="">Select Event Type</option>
-                                <option value="Activity">Activity</option>
-                                <option value="Meeting">Meeting</option>
+                                <option value="activity">Activity</option>
+                                <option value="announcement">Announcement</option>
+                                <option value="meeting">Meeting</option>
                             </Form.Select>
                             {errors.eventType && <small className="text-danger">This field is required</small>}
                         </Form.Group>
 
                         <Form.Group controlId="eventTitle" className="mb-2">
                             <Form.Label>Event Title</Form.Label>
-                            <Form.Control type="text" placeholder="Enter event title" {...register("title", { required: true, maxLength: 30 })} className={errors.title && 'is-invalid'} />
+                            <Form.Control type="text" placeholder="Enter event title" {...register("title", { required: true, maxLength: 100 })} className={errors.title && 'is-invalid'} />
                             {errors.title && <small className="text-danger">This field is required</small>}
                             {errors.title && errors.title.type === 'maxLength' && <small className="text-danger">Max length exceeded</small>}
                         </Form.Group>

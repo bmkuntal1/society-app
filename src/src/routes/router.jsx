@@ -13,6 +13,7 @@ import NotFoundPage from "../pages/NotFoundPage";
 import LoginPage from "../pages/admin/LoginPage";
 import Dashboard from "../pages/admin/Dashboard";
 import ManageEventsPage from "../pages/admin/ManageEventsPage";
+import MemberPage from "../pages/website/MemberPage";
 
 const routes = [
     {
@@ -64,6 +65,10 @@ const routes = [
             {
                 path: "resident-corner",
                 element: <ResidentCorner />
+            },
+            {
+                path: "member",
+                element: <MemberPage />
             }
         ],
     },

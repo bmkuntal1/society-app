@@ -13,21 +13,22 @@
     }
 }
 
-.home-carousel{
+.home-carousel {
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 
-    img{
+    img {
         height: 520px;
     }
 }
 
 //media hieght of image
 @media (max-width: 768px) {
-    .home-carousel{
+    .home-carousel {
         margin-top: 40px;
-        img{
+
+        img {
             height: 300px;
         }
     }
@@ -39,5 +40,21 @@
         border: none;
         box-shadow: none;
         overflow: hidden;
+    }
+}
+
+.menu-dropdown {
+    .dropdown-toggle {
+        color: rgba(0, 0, 0, 0.65);
+    }
+
+    .dropdown-item {
+        font-size: 14px;
+        font-weight: 700;
+        color: rgba(0, 0, 0, 0.65);
+
+        &:hover {
+            background-color: transparent;
+        }
     }
 }

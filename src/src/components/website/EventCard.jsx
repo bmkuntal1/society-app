@@ -3,6 +3,7 @@ import { ref, getDownloadURL } from 'firebase/storage'
 import { storage } from '../../firebase.config'
 
 function EventCard({ data }) {
+    const eventType = data.eventType == 'meeting' ? 'Meeting' : data.eventType == 'activity' ? 'Activity' : 'Announcement';
     const downloadFile = async (file) => {
         const fileRef = ref(storage, file);
         await getDownloadURL(fileRef).then((result) => {
@@ -10,7 +11,7 @@ function EventCard({ data }) {
             window.open(result);
         }
         ).catch((error) => {
-            console.log(error);          
+            console.log(error);
         });
     }
 
@@ -19,7 +20,7 @@ function EventCard({ data }) {
             <div className="card-body p-4">
                 <div className="row align-items-start gx-5">
                     <div className="col-lg-3 text-center text-lg-start mb-3 mb-lg-0">
-                        <div className="text-gradient text-center p-2 fs-20">Meeting</div>
+                        <div className="text-gradient text-center p-2 fs-20">{eventType}</div>
                         <div className="card date-card shadow border-0 rounded-4 text-center bg-dark text-light">
                             <div className="card-body">
                                 <h1 className="display-4 p-0 m-0 fw-bold">{format(data?.eventDate.toDate(), 'dd')}</h1>
@@ -36,7 +37,7 @@ function EventCard({ data }) {
                         <div className="mt-2 text-end">
                             {data?.documents && data.documents.map((doc, index) => {
                                 return (
-                                    <button className="btn btn-pill text-gradient px-4" key={index} onClick={()=>downloadFile(doc.url)}>{doc.name} <i className="bi bi-download"></i></button>
+                                    <button className="btn btn-pill text-gradient px-4" key={index} onClick={() => downloadFile(doc.url)}>{doc.name} <i className="bi bi-download"></i></button>
                                 )
                             })}
                         </div>

@@ -1,4 +1,3 @@
-import React from 'react'
 import { db } from "../../firebase.config";
 import { query, collection, orderBy, limit, doc, deleteDoc } from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore";
@@ -9,7 +8,7 @@ import DocumentModal from './DocumentModal';
 
 
 function ManageEventsPage() {
-    const [value, loading, error] = useCollection(query(collection(db, 'events'), orderBy('eventDate', 'desc'), limit(3)));
+    const [value, loading, error] = useCollection(query(collection(db, 'events'), orderBy('eventDate', 'desc'), limit(20)));
     const [showEventModal, setShowEventModal] = useState(false);
     const [showDocumentModal, setShowDocumentModal] = useState(false);
     const [id, setId] = useState(null);
